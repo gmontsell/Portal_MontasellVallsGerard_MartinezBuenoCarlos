@@ -8,7 +8,7 @@ Shader "Tecnocampus/PortalShader"
     }
         SubShader
         {
-            Tags{  "IgnoreProjector" = "True" "RenderType" = "Opaque" }
+            Tags{ "IgnoreProjector" = "True" "RenderType" = "Opaque" }
             Lighting Off
             Cull Back
             ZWrite On
@@ -36,9 +36,10 @@ Shader "Tecnocampus/PortalShader"
 
                 v2f vert(appdata v)
                 {
-                    
+
                     v2f o;
-                    v.vertex.x = v.vertex.x * 0.2 * (1+ _SinTime[3] * 0.1);
+                    v.vertex.x = v.vertex.x * (1 + (_SinTime[3] * 0.1));
+                    v.vertex.y = v.vertex.y * (1 - (_SinTime[3] * 0.1));
                     o.vertex = UnityObjectToClipPos(v.vertex);
                     o.uv = v.uv;
                     o.screenPos = ComputeScreenPos(o.vertex);
@@ -54,6 +55,8 @@ Shader "Tecnocampus/PortalShader"
                     fixed4 l_MaskColor = tex2D(_MaskTex, i.uv);
                     if (l_MaskColor.a < _Cutout)
                         clip(-1);
+                    i.screenPos.x = i.screenPos.x + 0.01 * sin(_Time.w * 1 + i.screenPos.y * 20);
+                    //i.screenPos.y = i.screenPos.y - _CosTime[3] * 0.1;
                     fixed4 col = tex2D(_MainTex, float2(i.screenPos.x, i.screenPos.y));
                     return col;
                 }
