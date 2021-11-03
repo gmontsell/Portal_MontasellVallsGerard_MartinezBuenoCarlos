@@ -18,7 +18,7 @@ public class PreviewPortal : MonoBehaviour
            if( Physics.Raycast(mainCam.transform.position, point.position - mainCam.transform.position,
                 out RaycastHit hitInfo, float.MaxValue, layerMask))
             {
-                if (!hitInfo.transform.gameObject.CompareTag(escenariTag))
+                if (hitInfo.transform.gameObject.CompareTag(escenariTag))
                 { 
                     Debug.Log("Invalid position: TAG");
                     return false;

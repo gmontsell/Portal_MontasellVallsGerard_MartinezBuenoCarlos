@@ -50,15 +50,19 @@ public class FPSController_0 : MonoBehaviour
         Cursor.visible = true;
     }
 
-    private void OnDestroy()
+    private void Start()
     {
-        
+        recalculatePictchAndYaw();
     }
-    void Awake()
+
+    public void recalculatePictchAndYaw()
     {
         mYaw = transform.rotation.eulerAngles.y;
+        if (mPitch < 180) mPitch -= 360;
         mPitch = M_Pitch_Controller.transform.eulerAngles.x;
     }
+
+    
     void Update()
     {
         if (!m_AngleLocked) Rotate();
