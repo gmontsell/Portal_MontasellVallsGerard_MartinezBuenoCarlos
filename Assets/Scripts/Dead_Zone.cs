@@ -6,8 +6,10 @@ public class Dead_Zone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        HealthSystem hs = other.GetComponent<HealthSystem>();
-        if (hs != null) hs.takeDamage(999);
-    }
+
+        Debug.Log("DEAD");
+        //HealthSystem hs = other.GetComponent<HealthSystem>();
+        //if (hs != null) hs.takeDamage(999);
+    }   
 }
 
