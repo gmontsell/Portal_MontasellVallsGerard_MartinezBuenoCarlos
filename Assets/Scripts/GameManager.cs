@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private List<Transform> chekPoints;
-    [SerializeField] private Text textGameOver;
+   // [SerializeField] private Text textGameOver;
 
     private int last_chekPoint;
 
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public void gameOver()
     {
-        textGameOver.gameObject.SetActive(true);
+        //textGameOver.gameObject.SetActive(true);
         player.GetComponent<CharacterController>().enabled = false;
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        textGameOver.gameObject.SetActive(false);
+        //textGameOver.gameObject.SetActive(false);
         player.GetComponent<HealthSystem>().restart();
         player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = chekPoints[last_chekPoint].position;
@@ -39,8 +39,6 @@ public class GameManager : MonoBehaviour
     }
     public void setLastCheckpoint(int chekPoint)
     {
-        chekPoints[last_chekPoint].gameObject.GetComponent<CheckPoint>().desactivateChekPoint();
         last_chekPoint = chekPoint;
-        chekPoints[last_chekPoint].gameObject.GetComponent<CheckPoint>().activateChekPoint();
     }
 }
