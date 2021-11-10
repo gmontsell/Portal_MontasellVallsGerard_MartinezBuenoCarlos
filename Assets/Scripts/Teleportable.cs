@@ -10,13 +10,13 @@ public class Teleportable : MonoBehaviour
     private bool isTeleporting = false;
     private Vector3 teleportPosition;
     private Vector3 teleportForward;
-
+    [SerializeField]public bool isActive;
 
     private void OnTriggerEnter(Collider other)
     {
 
       
-        if (other.gameObject.TryGetComponent(out Portal portal))
+        if (other.gameObject.TryGetComponent(out Portal portal)&&isActive)
         {
             Debug.Log("Teleport");
             isTeleporting = true;
@@ -25,6 +25,13 @@ public class Teleportable : MonoBehaviour
 
             teleportForward = portal.otherPortal.transform.TransformDirection(l_Direction);
             teleportPosition = portal.otherPortal.transform.TransformPoint(l_Position) + portal.otherPortal.transform.forward * teleportOffset;
+
+            if(TryGetComponent(out Rigidbody rb))
+            {
+                Vector3 l_Velocity = portal.virtualPortal.transform.InverseTransformDirection(rb.velocity);
+                rb.velocity = portal.otherPortal.transform.TransformDirection(l_Velocity);
+                transform.localScale *=  (portal.otherPortal.transform.localScale.x / portal.transform.localScale.x);
+            }
 
         }
     }

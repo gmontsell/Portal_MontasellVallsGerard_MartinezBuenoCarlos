@@ -7,7 +7,7 @@ public class Portal : MonoBehaviour
    [SerializeField] public Portal otherPortal;
    [SerializeField] private Transform playerCamTransform;
    [SerializeField] public Transform virtualPortal;
-    [SerializeField] private Transform portalCamera;
+   [SerializeField] private Transform portalCamera;
 
     [SerializeField] private float nearClipOffset=10f;
 
