@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class GravityGun__ : MonoBehaviour
 {
-
     Rigidbody takenObject;
+    [SerializeField] Camera mainCamera;
+    [SerializeField] float maxDistance;
     enum Status { taking, taken }
     Status currentStatus;
-    [SerializeField] Camera cam;
+
     [SerializeField] Transform attachPosition;
     Vector3 initialPosition;
     Quaternion initialRotation;
@@ -18,7 +19,7 @@ public class GravityGun__ : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.G))
         {
             Debug.Log("GravityShoot");
             takenObject = gravityShoot();
@@ -38,8 +39,6 @@ public class GravityGun__ : MonoBehaviour
                         break;
                 }
 
-                if(Input.GetKeyDown(KeyCode.T)) detachObject(1000);
-
             }
             else
             {
@@ -47,53 +46,45 @@ public class GravityGun__ : MonoBehaviour
             }
         }
     }
-
-    
-
-    private void detachObject(float force)
+    private Rigidbody gravityShoot()
     {
+        Ray r = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.5f));
+        if (Physics.Raycast(r, out RaycastHit hitInfo, maxDistance)) ;
+        {
+            if (hitInfo.rigidbody != null)
+            {
 
-        if (takenObject.gameObject.TryGetComponent(out Teleportable tp)) tp.isActive = true;
-        takenObject.isKinematic = false;
-        takenObject.AddForce(attachPosition.forward * force);
-        takenObject = null;
+                hitInfo.rigidbody.isKinematic = true;
+                if (hitInfo.rigidbody.gameObject.TryGetComponent<Teleportable>(out Teleportable tp)) tp.isActive = false;
+                initialPosition = hitInfo.transform.position;
+                initialRotation = hitInfo.transform.rotation;
+                currentStatus = Status.taking;
+                return hitInfo.rigidbody;
+            }
+        }
+
+        return null;
     }
+    private void updateTaking()
+    {
+        takenObject.MovePosition(takenObject.position + (attachPosition.position - takenObject.position).normalized * moveSpeed * Time.deltaTime);
 
+        takenObject.rotation = Quaternion.Lerp(initialRotation, attachPosition.rotation, (takenObject.position - initialPosition).magnitude / (attachPosition.position - initialPosition).magnitude);
+
+        if ((attachPosition.position - takenObject.position).magnitude < 0.1f) currentStatus = Status.taken;
+    }
     private void updateTaken()
     {
         takenObject.transform.position = attachPosition.position;
         takenObject.transform.rotation = attachPosition.rotation;
     }
 
-    private void updateTaking()
+    private void detachObject(float force)
     {
-        takenObject.MovePosition(
-            takenObject.position + (attachPosition.position - takenObject.position).normalized
-            * moveSpeed * Time.deltaTime);
-
-        takenObject.rotation = Quaternion.Lerp(initialRotation, attachPosition.rotation,
-            (takenObject.position - initialPosition).magnitude / (attachPosition.position - initialPosition).magnitude);
-
-
-        if ((attachPosition.position - takenObject.position).magnitude < 0.1f) currentStatus = Status.taken;
-
-    }
-
-    private Rigidbody gravityShoot()
-    {
-        if (Physics.Raycast(cam.ViewportPointToRay(new Vector3(0.5f, 0.5f)), out RaycastHit hit, 200.0f))
-        {
-            Rigidbody rb = hit.rigidbody;
-            if (rb == null) return null;
-            rb.isKinematic = true;
-
-            if (hit.rigidbody.gameObject.TryGetComponent<Teleportable>(out Teleportable tp)) tp.isActive = false;
-            initialPosition = rb.transform.position;
-            initialRotation = rb.transform.rotation;
-            currentStatus = Status.taking;
-            return rb;
-
-        }
-        return null;
+        if (takenObject.gameObject.TryGetComponent<Teleportable>(out Teleportable tp)) tp.isActive = true;
+        takenObject.isKinematic = false;
+        takenObject.AddForce(attachPosition.forward * force);
+        takenObject = null;
     }
 }
+
