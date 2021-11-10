@@ -1974,6 +1974,7 @@ GameObject:
   - component: {fileID: 3584112032058272273}
   - component: {fileID: 3572690793667713187}
   - component: {fileID: 3565594556261584840}
+  - component: {fileID: 8363105627543289099}
   m_Layer: 0
   m_Name: Companion
   m_TagString: Cube
@@ -2068,6 +2069,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db48045d8b460e4ba686c087052b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8363105627543289099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565594556261584843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30134f0a9d2c65446a05442cdc00f101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportOffset: 1
+  isActive: 0
 --- !u!1 &3565648803870336645
 GameObject:
   m_ObjectHideFlags: 0

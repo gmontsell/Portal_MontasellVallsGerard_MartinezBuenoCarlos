@@ -26,7 +26,12 @@ public class GravityGun__ : MonoBehaviour
         }
         if (takenObject != null)
         {
-            if (Input.GetMouseButton(2) && takenObject != null)
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Debug.Log("Shooting");
+                detachObject(1000);
+            }
+           else if (Input.GetMouseButton(2) && takenObject != null)
             {
                 takenObject.isKinematic = true;
                 switch (currentStatus)
@@ -42,7 +47,7 @@ public class GravityGun__ : MonoBehaviour
             }
             else
             {
-                detachObject(1000);
+                detachObject(1);
             }
         }
     }
@@ -81,7 +86,10 @@ public class GravityGun__ : MonoBehaviour
 
     private void detachObject(float force)
     {
-        if (takenObject.gameObject.TryGetComponent<Teleportable>(out Teleportable tp)) tp.isActive = true;
+        if (takenObject.gameObject.TryGetComponent<Teleportable>(out Teleportable tp))
+        {
+            tp.isActive = true;
+        }
         takenObject.isKinematic = false;
         takenObject.AddForce(attachPosition.forward * force);
         takenObject = null;

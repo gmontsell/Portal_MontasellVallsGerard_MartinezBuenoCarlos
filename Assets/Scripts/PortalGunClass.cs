@@ -44,7 +44,6 @@ public class PortalGunClass : MonoBehaviour
         {
             if (hitInfo.transform.gameObject.CompareTag(portalEnableTag))
             {
-                Debug.Log("FUncioma");
                 previewPortal.transform.position = hitInfo.point;
                 previewPortal.transform.forward = hitInfo.normal;
                 return previewPortal.GetComponent<PreviewPortal>().isValidPosition(mainCam);
