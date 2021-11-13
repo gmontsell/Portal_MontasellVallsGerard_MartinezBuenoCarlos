@@ -18,34 +18,30 @@ public class PreviewPortal : MonoBehaviour
            if( Physics.Raycast(mainCam.transform.position, point.position - mainCam.transform.position,
                 out RaycastHit hitInfo, float.MaxValue, layerMask))
             {
-                if (hitInfo.transform.gameObject.CompareTag(escenariTag))
-                { 
-                    Debug.Log("Invalid position: TAG");
+                if ((hitInfo.point - point.position).magnitude > maxDistance)
+                {
+                    Debug.Log("Invalid position: Distance");
                     return false;
-                   
                 }
+               
                 if (Vector3.Angle(hitInfo.normal, point.forward) > maxNormalAngle)
                 {
                     Debug.Log("Invalid position: Angle");
                     return false;
                     
                 }
-                if ((hitInfo.point - point.position).magnitude > maxDistance)
+
+                if (!hitInfo.transform.gameObject.CompareTag(escenariTag))
                 {
-                    Debug.Log("Invalid position: Distance");
+                    Debug.Log("Invalid position: TAG");
                     return false;
                 }
-                return true;
-            }
+           }
             else
             {
                 return false;
             }
-           
-            //if !portal_enabled --> return false
-            // if angle (normal, lastNormal) > angleTheshold --> return false;
-            //if dist(controlPoint, raycastPoint) > distThreeshold -->return false;
         }
-        return false;
+        return true;
     }
 }

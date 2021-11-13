@@ -19,9 +19,9 @@ public class PortalGunClass : MonoBehaviour
     {
         if(Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
-            isActive = movePreviewPortal();
+            previewPortal.SetActive(isActive);
+            isActive = movePreviewPortal();  
         }
-        previewPortal.SetActive(isActive);
         if (Input.GetMouseButtonUp(0)&& isActive)
         {
             bluePortal.SetActive(true);
