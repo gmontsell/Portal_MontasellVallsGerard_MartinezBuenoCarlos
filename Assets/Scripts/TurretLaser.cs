@@ -10,6 +10,7 @@ public class TurretLaser : MonoBehaviour
     [SerializeField] LayerMask laserLayerMask;
     [SerializeField] private float maxLaserDist;
     [SerializeField] private bool isActive;
+    [SerializeField] private bool isTurret;
     public void  updateState(bool isActive)
     {
 
@@ -26,13 +27,14 @@ public class TurretLaser : MonoBehaviour
             {
                 laserRenderer.SetPosition(1, Vector3.forward * hitInfo.distance);
 
-                if(hitInfo.transform.gameObject.TryGetComponent(out TurretLaser laser))
+                if(hitInfo.transform.gameObject.TryGetComponent<TurretLaser>(out TurretLaser laser))
                 {
                     laser.updateState(true);
                 }
+                if (hitInfo.transform.gameObject.TryGetComponent<HealthSystem>(out HealthSystem hs) && isTurret) hs.kill();
             }else
             {
-                laserRenderer.SetPosition(1, Vector3.forward * maxLaserDist);
+                laserRenderer.SetPosition(1, laserRenderer.transform.forward * maxLaserDist);
             }
         }
     }
