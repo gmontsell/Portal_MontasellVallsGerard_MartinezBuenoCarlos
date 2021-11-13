@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
     public void gameOver()
     {
         //textGameOver.gameObject.SetActive(true);
-        player.GetComponent<CharacterController>().enabled = false;
-        if (Input.GetKeyDown(KeyCode.F))
-        {
+        Debug.Log("GG");
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
             Restart();
-        }
+        //}
     }
 
     public void Restart()

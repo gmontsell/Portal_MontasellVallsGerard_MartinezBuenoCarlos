@@ -23,17 +23,17 @@ public class HealthSystem : MonoBehaviour
     public void takeDamage(float value)
     {
         health -= value;
-        if (health <= 0.0f) Destroy(gameObject);
+        if (health <= 0.0f) gameManager.gameOver(); ;
     }
 
     internal void restart()
     {
-        
         health = initialHealth;
     }
     public void kill()
     {
         health = 0;
+        gameManager.gameOver();
     }
     private void Update()
     {
