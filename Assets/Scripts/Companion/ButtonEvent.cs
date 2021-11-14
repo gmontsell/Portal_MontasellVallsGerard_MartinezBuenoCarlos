@@ -11,8 +11,9 @@ public class ButtonEvent : MonoBehaviour
     [SerializeField] UnityEvent buttonEvent;
     [SerializeField] string buttonName;
     [SerializeField] KeyCode buttonKeyCode;
-
+    [SerializeField] Animation anim;
     [SerializeField] bool infinite;
+
     private bool todo=true;
 
    public bool pressButton()
@@ -31,11 +32,15 @@ public class ButtonEvent : MonoBehaviour
     public void pressOpenDoor()
     {
         Debug.Log("Abriendo");
+        anim.Play("Door1");
+        
     }
 
     internal void pressCloseDoor()
     {
         Debug.Log("Cerrando");
+        anim.Play("Door2");
+       
     }
 
     public KeyCode getKeyCode()
