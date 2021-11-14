@@ -11,6 +11,8 @@ public class TurretLaser : MonoBehaviour
     [SerializeField] private float maxLaserDist;
     [SerializeField] private bool isActive;
     [SerializeField] private bool isTurret;
+    private GameObject lastLaserObj;
+    private GameObject lastReceptor;
     public void  updateState(bool isActive)
     {
 
@@ -27,9 +29,25 @@ public class TurretLaser : MonoBehaviour
             {
                 laserRenderer.SetPosition(1, Vector3.forward * hitInfo.distance);
 
-                if(hitInfo.transform.gameObject.TryGetComponent<TurretLaser>(out TurretLaser laser))
+                if (hitInfo.transform.gameObject.TryGetComponent<TurretLaser>(out TurretLaser laser))
                 {
+                    lastLaserObj = laser.gameObject;
                     laser.updateState(true);
+                }
+                else if(hitInfo.transform.gameObject.TryGetComponent<LaserReceptor>(out LaserReceptor receptor) && !isTurret)
+                {
+                    lastReceptor = receptor.gameObject;
+                    receptor.openDoor();
+                }
+                else if (lastLaserObj != null)
+                {
+                    lastLaserObj.GetComponent<TurretLaser>().updateState(false);
+                    lastLaserObj = null;
+                }
+                else if (lastReceptor != null && !isTurret)
+                {
+                    lastReceptor.GetComponent<LaserReceptor>().closeDoor();
+                    lastReceptor = null;
                 }
                 if (hitInfo.transform.gameObject.TryGetComponent<HealthSystem>(out HealthSystem hs) && isTurret) hs.kill();
             }

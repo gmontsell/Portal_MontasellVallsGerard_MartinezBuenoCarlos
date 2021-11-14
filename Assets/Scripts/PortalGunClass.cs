@@ -67,7 +67,6 @@ public class PortalGunClass : MonoBehaviour
 
     private void checkSize(GameObject  portal)
     {
-        Debug.Log(lastSize);
         if (Input.GetAxis("Mouse ScrollWheel") >= 0f && lastSize<=2.0f )
         {
             lastSize += Input.GetAxis("Mouse ScrollWheel");

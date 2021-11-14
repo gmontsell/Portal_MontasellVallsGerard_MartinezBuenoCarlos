@@ -8,6 +8,7 @@ public delegate void DieFunction();
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField] float health = 100.0f;
+    [SerializeField] bool isTurret = false;
     [SerializeField] GameManager gameManager;
     private float initialHealth = 0;
     private DieFunction die;
@@ -32,8 +33,12 @@ public class HealthSystem : MonoBehaviour
     }
     public void kill()
     {
-        health = 0;
-        gameManager.gameOver();
+        if (isTurret) Destroy(gameObject);
+        else
+        {
+            health = 0;
+            gameManager.gameOver();
+        }  
     }
     private void Update()
     {

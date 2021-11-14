@@ -31,14 +31,12 @@ public class ButtonEvent : MonoBehaviour
 
     public void pressOpenDoor()
     {
-        Debug.Log("Abriendo");
         anim.Play("Door1");
         
     }
 
     internal void pressCloseDoor()
     {
-        Debug.Log("Cerrando");
         anim.Play("Door2");
        
     }
