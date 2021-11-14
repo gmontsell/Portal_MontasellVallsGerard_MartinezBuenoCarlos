@@ -37,10 +37,10 @@ public class HealthSystem : MonoBehaviour
     }
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.M))
+       if (health <= 0)
         {
-            die();
-        }*/
+            kill();
+        }
     }
 
     internal void takeDamage(object v)

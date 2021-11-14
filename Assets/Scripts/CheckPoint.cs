@@ -11,4 +11,10 @@ public class CheckPoint : MonoBehaviour
     {
         gameManager.setLastCheckpoint(num_Chekpoint);
     }
+
+    private int getNumCheckPoint()
+    {
+        return num_Chekpoint;
+
+    }
 }
