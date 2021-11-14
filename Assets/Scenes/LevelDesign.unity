@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30134f0a9d2c65446a05442cdc00f101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportOffset: 1
+  teleportOffset: 3
   isActive: 1
 --- !u!114 &102322626
 MonoBehaviour:
@@ -12245,6 +12245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046818105271791517, guid: 4c56da5e41f207c45901d8fba092c949,
+        type: 3}
+      propertyPath: teleportOffset
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3046818105271791519, guid: 4c56da5e41f207c45901d8fba092c949,
         type: 3}
