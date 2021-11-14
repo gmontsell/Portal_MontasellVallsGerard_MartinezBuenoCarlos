@@ -32,10 +32,14 @@ public class TurretLaser : MonoBehaviour
                     laser.updateState(true);
                 }
                 if (hitInfo.transform.gameObject.TryGetComponent<HealthSystem>(out HealthSystem hs) && isTurret) hs.kill();
-            }else
+            }
+            else
             {
                 laserRenderer.SetPosition(1, laserRenderer.transform.forward * maxLaserDist);
             }
+        }
+        else{
+            updateState(false);
         }
     }
 }

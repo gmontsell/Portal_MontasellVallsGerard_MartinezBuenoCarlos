@@ -20,20 +20,17 @@ public class PreviewPortal : MonoBehaviour
             {
                 if ((hitInfo.point - point.position).magnitude > maxDistance)
                 {
-                    Debug.Log("Invalid position: Distance");
                     return false;
                 }
                
                 if (Vector3.Angle(hitInfo.normal, point.forward) > maxNormalAngle)
                 {
-                    Debug.Log("Invalid position: Angle");
                     return false;
                     
                 }
 
                 if (!hitInfo.transform.gameObject.CompareTag(escenariTag))
                 {
-                    Debug.Log("Invalid position: TAG");
                     return false;
                 }
            }

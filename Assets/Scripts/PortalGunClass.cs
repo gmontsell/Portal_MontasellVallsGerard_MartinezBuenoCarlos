@@ -13,25 +13,31 @@ public class PortalGunClass : MonoBehaviour
     [SerializeField] private LayerMask portalLayerMask;
     [SerializeField] private GameObject orangePortal;
     [SerializeField] private GameObject bluePortal;
+    [SerializeField] private Vector3 initialSize = new Vector3(1.0f,1.85f,1.15f);
     private bool isActive;
+    private float lastSize = 1;
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0) || Input.GetMouseButton(1))
+        
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
+            checkSize(previewPortal);
             previewPortal.SetActive(isActive);
             isActive = movePreviewPortal();  
         }
         if (Input.GetMouseButtonUp(0)&& isActive)
         {
+            checkSize(bluePortal);
             bluePortal.SetActive(true);
             bluePortal.transform.SetPositionAndRotation(previewPortal.transform.position, previewPortal.transform.rotation);
             previewPortal.SetActive(false);
         }
         if (Input.GetMouseButtonUp(1)&& isActive)
         {
+            checkSize(orangePortal);
             orangePortal.SetActive(true);
-            orangePortal.transform.SetPositionAndRotation(previewPortal.transform.position, previewPortal.transform.rotation);
+            orangePortal.transform.SetPositionAndRotation(previewPortal.transform.position, previewPortal.transform.rotation);          
             previewPortal.SetActive(false);
         }
         
@@ -57,5 +63,21 @@ public class PortalGunClass : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void checkSize(GameObject  portal)
+    {
+        Debug.Log(lastSize);
+        if (Input.GetAxis("Mouse ScrollWheel") >= 0f && lastSize<=2.0f )
+        {
+            lastSize += Input.GetAxis("Mouse ScrollWheel");
+            portal.transform.localScale = initialSize * lastSize;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") <= 0f && lastSize >= 0.5f)
+        {
+            lastSize += Input.GetAxis("Mouse ScrollWheel");
+            portal.transform.localScale = initialSize * lastSize;
+        }
+        
     }
 }
