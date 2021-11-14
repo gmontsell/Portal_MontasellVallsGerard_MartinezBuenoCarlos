@@ -26,7 +26,5 @@ public class TurretAngleDetector : MonoBehaviour
             isActive = true;
             activate.Invoke();
         }
-
-        Debug.Log("ANgle: " + angle);
     }
 }
