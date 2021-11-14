@@ -2042,7 +2042,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241454417}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.165001, y: 1.2, z: -8.2699995}
+  m_LocalPosition: {x: 4.51, y: -1.95, z: -3.98}
   m_LocalScale: {x: 0.62852466, y: 0.62852466, z: 0.62852466}
   m_Children:
   - {fileID: 1351673939}
@@ -2271,7 +2271,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxLaserDist: 100
-  isActive: 0
+  isActive: 1
   isTurret: 0
 --- !u!1 &241454419
 GameObject:
@@ -3348,6 +3348,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475955609476446366, guid: d668318ad6559a94fbb43b94020fe86f,
+        type: 3}
+      propertyPath: maxLaserDist
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475955609476446367, guid: d668318ad6559a94fbb43b94020fe86f,
+        type: 3}
+      propertyPath: maxAngle
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d668318ad6559a94fbb43b94020fe86f, type: 3}
@@ -9200,6 +9210,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1475955609476446367, guid: d668318ad6559a94fbb43b94020fe86f,
+        type: 3}
+      propertyPath: maxAngle
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d668318ad6559a94fbb43b94020fe86f, type: 3}
 --- !u!1 &942697061
@@ -11809,7 +11824,7 @@ MonoBehaviour:
   laserRenderer: {fileID: 2072652166}
   laserLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   maxLaserDist: 100
   isActive: 1
   isTurret: 0
@@ -12100,7 +12115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329937775}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.43, z: -9.79}
+  m_LocalPosition: {x: 0, y: -1.38, z: -9.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2072652167}
@@ -14014,6 +14029,7 @@ GameObject:
   - component: {fileID: 1670833616}
   - component: {fileID: 1670833615}
   - component: {fileID: 1670833614}
+  - component: {fileID: 1670833619}
   m_Layer: 6
   m_Name: Cube (16)
   m_TagString: PortalEnable
@@ -14314,6 +14330,25 @@ Transform:
   m_Father: {fileID: 965108529}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1670833619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670833613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabe8e13de856bb4693246d8c5d2cf6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserRenderer: {fileID: 0}
+  laserLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  maxLaserDist: 0
+  isActive: 0
+  isTurret: 0
 --- !u!1 &1721307162
 GameObject:
   m_ObjectHideFlags: 0
@@ -14721,17 +14756,17 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.99381757, g: 1, b: 0, a: 1}
-      key1: {r: 0.990566, g: 0.83353573, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0.98480487, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0.990566, g: 0.83353573, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
+      ctime0: 44525
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -18238,6 +18273,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475955609476446367, guid: d668318ad6559a94fbb43b94020fe86f,
+        type: 3}
+      propertyPath: maxAngle
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d668318ad6559a94fbb43b94020fe86f, type: 3}
@@ -23012,6 +23052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475955609476446367, guid: d668318ad6559a94fbb43b94020fe86f,
+        type: 3}
+      propertyPath: maxAngle
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d668318ad6559a94fbb43b94020fe86f, type: 3}
