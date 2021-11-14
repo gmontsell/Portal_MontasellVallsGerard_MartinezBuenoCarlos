@@ -5883,12 +5883,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &599284994 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7109707101172701997, guid: 8cec7ace4892e0f4e9090f89c441bb3b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1179350751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &607346297
 GameObject:
   m_ObjectHideFlags: 0
@@ -11370,7 +11364,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerCameraTransform
       value: 
-      objectReference: {fileID: 1758734771}
+      objectReference: {fileID: 1326909432}
     - target: {fileID: 8257081949879664177, guid: 8cec7ace4892e0f4e9090f89c441bb3b,
         type: 3}
       propertyPath: m_RootOrder
@@ -11902,6 +11896,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c56da5e41f207c45901d8fba092c949, type: 3}
+--- !u!4 &1326909432 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3046818105723628793, guid: 4c56da5e41f207c45901d8fba092c949,
+    type: 3}
+  m_PrefabInstance: {fileID: 1326909431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1329937775
 GameObject:
   m_ObjectHideFlags: 0
@@ -14849,12 +14849,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5718ba0d86b07c4428af67cbd37bcfd2,
     type: 3}
   m_PrefabInstance: {fileID: 555940284}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1758734771 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1527124155027703713, guid: 1651a49c8f923b7488f6c76c81349d9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2101597387}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1759618148
 Mesh:
@@ -19153,7 +19147,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerCameraTransform
       value: 
-      objectReference: {fileID: 599284994}
+      objectReference: {fileID: 1326909432}
     - target: {fileID: 3701836940774460699, guid: 1651a49c8f923b7488f6c76c81349d9b,
         type: 3}
       propertyPath: m_RootOrder
